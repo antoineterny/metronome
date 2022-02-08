@@ -1,6 +1,6 @@
 class Metronome
 {
-    constructor(tempo = 120)
+    constructor(tempo = 88)
     {
         this.audioContext = null;
         this.notesInQueue = [];         // notes that have been put into the web audio and may or may not have been played yet {note, time}
@@ -34,7 +34,8 @@ class Metronome
         const osc = this.audioContext.createOscillator();
         const envelope = this.audioContext.createGain();
         
-        osc.frequency.value = (beatNumber % 4 == 0) ? 1000 : 800;
+        // osc.frequency.value = (beatNumber % 4 == 0) ? 1000 : 800;
+        osc.frequency.value = 800;
         envelope.gain.value = 1;
         envelope.gain.exponentialRampToValueAtTime(1, time + 0.001);
         envelope.gain.exponentialRampToValueAtTime(0.001, time + 0.02);
