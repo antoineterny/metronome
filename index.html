@@ -1,35 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maelzel Metronome</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maelzel metronome</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="./metronome.js" defer></script>
+  <script src="./app.js" defer></script>
 </head>
 <body>
-    <div class="title">Maelzel<br>Metronome</div>
-    <button id="play-button" class="">
-        <div id="play-pause-icon" class="play"></div>
-    </button>
-
-    <div class="tempo-controls">
-        <button class="tempo-change" data-change="-1">-1</button>
-        <button class="maelzel-change" id="prev-maelzel">-</button>
-
-        <div class="tempo-container">
-            <div id="tempo">88</div>
-            <div class="bpm">bpm</div>
-        </div>
-
-        <button class="maelzel-change" id="next-maelzel">+</button>
-        <button class="tempo-change" data-change="+1">+1</button>
+  <div class="container">
+    
+    <div class="mode-selector">
+      <div id="maelzel" class="active">maelzel</div>
+      <label class="switch">
+        <input type="checkbox" id="selector-checkbox">
+        <span class="slider"></span>
+      </label>
+      <div id="unite">unité</div>
     </div>
 
-    <div class="created-by">
-        Forked from <a href="https://grantjam.es" target="_blank">Grant James</a>
+    <div class="tap" >
+      <div class="tap-zone" onclick="tapTempo()">tap</div>
     </div>
 
-    <script src="metronome.js"></script>
-    <script src="app.js"></script>
+    <div class="main">
+      <button id="moins">
+        <svg width="23" height="6" viewBox="0 0 23 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <rect width="23" height="6" rx="1" fill="black"/>
+        </svg>
+      </button>
+      <input type="number" id="tempo-input" value="88">
+      <button id="plus">
+        <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M8.5 22C8.5 22.5523 8.94772 23 9.5 23H13.5C14.0523 23 14.5 22.5523 14.5 22V14.5H22C22.5523 14.5 23 14.0523 23 13.5V9.5C23 8.94772 22.5523 8.5 22 8.5H14.5V1C14.5 0.447715 14.0523 0 13.5 0H9.5C8.94771 0 8.5 0.447715 8.5 1V8.5H1C0.447715 8.5 0 8.94772 0 9.5V13.5C0 14.0523 0.447715 14.5 1 14.5H8.5V22Z" fill="black"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="subdiv-selector">
+      <div class="subdiv active" onclick="selectSubdiv(1)"></div>
+      <div class="subdiv" onclick="selectSubdiv(2)"></div>
+      <div class="subdiv" onclick="selectSubdiv(3)"></div>
+      <div class="subdiv" onclick="selectSubdiv(4)"></div>
+    </div>
+
+    <div class="play-stop-buttons">
+      <button id="play">
+        <svg width="33" height="40" viewBox="0 0 33 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M31.5816 19.1439C32.2259 19.5328 32.2259 20.4672 31.5816 20.8561L1.51676 39.0031C0.85028 39.4054 -3.40281e-08 38.9254 0 38.147L1.58646e-06 1.85305C1.62048e-06 1.07458 0.850282 0.59464 1.51676 0.996921L31.5816 19.1439Z" fill="#FCD535"/>
+        </svg>
+      </button>
+      <button id="stop" class="invisible">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <rect width="30" height="30" rx="2" fill="#FCD535"/>
+        </svg>
+      </button>
+    </div>
+
+  </div>
 </body>
 </html>

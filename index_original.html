@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maelzel Metronome</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="title">Maelzel<br>Metronome</div>
+    <button id="play-button" class="">
+        <div id="play-pause-icon" class="play"></div>
+    </button>
+
+    <div class="tempo-controls">
+        <button class="tempo-change" data-change="-1">-1</button>
+        <button class="maelzel-change" id="prev-maelzel">-</button>
+
+        <div class="tempo-container">
+            <div id="tempo">88</div>
+            <div class="bpm">bpm</div>
+        </div>
+
+        <button class="maelzel-change" id="next-maelzel">+</button>
+        <button class="tempo-change" data-change="+1">+1</button>
+    </div>
+
+    <div class="created-by">
+        Forked from <a href="https://grantjam.es" target="_blank">Grant James</a>
+    </div>
+
+    <script src="metronome.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
