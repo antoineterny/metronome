@@ -1,64 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maelzel metronome</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="./metronome.js" defer></script>
-  <script src="./app.js" defer></script>
-</head>
-<body>
-  <div class="container">
-    
-    <div class="mode-selector">
-      <div id="maelzel" class="active">maelzel</div>
-      <label class="switch">
-        <input type="checkbox" id="selector-checkbox">
-        <span class="slider"></span>
-      </label>
-      <div id="unite">unité</div>
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#181a20" />
 
-    <div class="tap" >
-      <div class="tap-zone" onclick="tapTempo()">tap</div>
-    </div>
+    <title>Maelzel metronome</title>
 
-    <div class="main">
-      <button id="moins">
-        <svg width="23" height="6" viewBox="0 0 23 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-         <rect width="23" height="6" rx="1" fill="black"/>
-        </svg>
-      </button>
-      <input type="number" id="tempo-input" value="88">
-      <button id="plus">
-        <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M8.5 22C8.5 22.5523 8.94772 23 9.5 23H13.5C14.0523 23 14.5 22.5523 14.5 22V14.5H22C22.5523 14.5 23 14.0523 23 13.5V9.5C23 8.94772 22.5523 8.5 22 8.5H14.5V1C14.5 0.447715 14.0523 0 13.5 0H9.5C8.94771 0 8.5 0.447715 8.5 1V8.5H1C0.447715 8.5 0 8.94772 0 9.5V13.5C0 14.0523 0.447715 14.5 1 14.5H8.5V22Z" fill="black"/>
-        </svg>
-      </button>
-    </div>
+    <link rel="stylesheet" href="style.css" />
 
-    <div class="subdiv-selector">
-      <div class="subdiv active" onclick="selectSubdiv(1)"></div>
-      <div class="subdiv" onclick="selectSubdiv(2)"></div>
-      <div class="subdiv" onclick="selectSubdiv(3)"></div>
-      <div class="subdiv" onclick="selectSubdiv(4)"></div>
-    </div>
+    <link rel="manifest" href="manifest.json" />
 
-    <div class="play-stop-buttons">
-      <button id="play">
-        <svg width="33" height="40" viewBox="0 0 33 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M31.5816 19.1439C32.2259 19.5328 32.2259 20.4672 31.5816 20.8561L1.51676 39.0031C0.85028 39.4054 -3.40281e-08 38.9254 0 38.147L1.58646e-06 1.85305C1.62048e-06 1.07458 0.850282 0.59464 1.51676 0.996921L31.5816 19.1439Z" fill="#FCD535"/>
-        </svg>
-      </button>
-      <button id="stop" class="invisible">
-        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-         <rect width="30" height="30" rx="2" fill="#FCD535"/>
-        </svg>
-      </button>
-    </div>
+    <script src="./js/metronome.js" defer></script>
+    <script>
+      navigator.serviceWorker.register("sw.js")
+    </script>
+    <script src="./js/app.js" defer></script>
 
-  </div>
-</body>
+    <link rel="apple-touch-icon" href="icons/apple-icon-180.png" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-2048-2732.jpg"
+      media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-2732-2048.jpg"
+      media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-1668-2388.jpg"
+      media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-2388-1668.jpg"
+      media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-1536-2048.jpg"
+      media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-2048-1536.jpg"
+      media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-1668-2224.jpg"
+      media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-2224-1668.jpg"
+      media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-1620-2160.jpg"
+      media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-2160-1620.jpg"
+      media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-1284-2778.jpg"
+      media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-2778-1284.jpg"
+      media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-1170-2532.jpg"
+      media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-2532-1170.jpg"
+      media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-1125-2436.jpg"
+      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-2436-1125.jpg"
+      media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-1242-2688.jpg"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-2688-1242.jpg"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-828-1792.jpg"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-1792-828.jpg"
+      media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-1242-2208.jpg"
+      media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-2208-1242.jpg"
+      media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-750-1334.jpg"
+      media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-1334-750.jpg"
+      media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-640-1136.jpg"
+      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      href="icons/apple-splash-1136-640.jpg"
+      media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="mode-selector">
+        <div id="maelzel" class="active">maelzel</div>
+        <label class="switch">
+          <input type="checkbox" id="selector-checkbox" />
+          <span class="slider"></span>
+        </label>
+        <div id="unite">unité</div>
+      </div>
+
+      <div class="tap">
+        <div class="tap-zone" onclick="tapTempo()">tap</div>
+      </div>
+
+      <div class="main">
+        <button id="moins">
+          <svg
+            width="23"
+            height="6"
+            viewBox="0 0 23 6"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="23" height="6" rx="1" fill="black" />
+          </svg>
+        </button>
+        <input type="number" id="tempo-input" value="88" />
+        <button id="plus">
+          <svg
+            width="23"
+            height="23"
+            viewBox="0 0 23 23"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8.5 22C8.5 22.5523 8.94772 23 9.5 23H13.5C14.0523 23 14.5 22.5523 14.5 22V14.5H22C22.5523 14.5 23 14.0523 23 13.5V9.5C23 8.94772 22.5523 8.5 22 8.5H14.5V1C14.5 0.447715 14.0523 0 13.5 0H9.5C8.94771 0 8.5 0.447715 8.5 1V8.5H1C0.447715 8.5 0 8.94772 0 9.5V13.5C0 14.0523 0.447715 14.5 1 14.5H8.5V22Z"
+              fill="black"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div class="subdiv-selector">
+        <div class="subdiv-title">SUBDIVISION</div>
+        <div class="subdiv-dots">
+          <div class="subdiv active" onclick="selectSubdiv(1)"></div>
+          <div class="subdiv" onclick="selectSubdiv(2)"></div>
+          <div class="subdiv" onclick="selectSubdiv(3)"></div>
+          <div class="subdiv" onclick="selectSubdiv(4)"></div>
+        </div>
+      </div>
+
+      <div class="play-stop-buttons">
+        <button id="play">
+          <svg
+            width="33"
+            height="40"
+            viewBox="0 0 33 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M31.5816 19.1439C32.2259 19.5328 32.2259 20.4672 31.5816 20.8561L1.51676 39.0031C0.85028 39.4054 -3.40281e-08 38.9254 0 38.147L1.58646e-06 1.85305C1.62048e-06 1.07458 0.850282 0.59464 1.51676 0.996921L31.5816 19.1439Z"
+              fill="#FCD535"
+            />
+          </svg>
+        </button>
+        <button id="stop" class="invisible">
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="30" height="30" rx="2" fill="#FCD535" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </body>
 </html>

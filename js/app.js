@@ -82,16 +82,30 @@ const selectSubdiv = int => {
   })
 }
 
-const taps = [Date.now()]
+const taps = []
 function tapTempo() {
+  document.querySelector(".tap-zone").classList.add("tapped")
+  setTimeout(() => {
+    document.querySelector(".tap-zone").classList.remove("tapped")
+  }, 10)
   taps.push(Date.now())
-  console.log('taps', taps)
-  let diff =
-    ((taps[taps.length - 1] - taps[taps.length - 2]) +
-      (taps[taps.length - 2] - taps[taps.length - 3])) /
-    2
-  let bpm = Math.round(60000 / diff)
+  if (taps[taps.length - 1] - taps[taps.length - 2] > 2000) taps.splice(0, taps.length - 1)
+  console.log("taps", taps)
+  if (taps.length <= 2) {
+    diff = taps[1] - taps[0]
+  } else if (taps.length === 3) {
+    diff = (taps[2] - taps[1] + (taps[1] - taps[0])) / 2
+  } else {
+    diff =
+      (taps[taps.length - 1] -
+        taps[taps.length - 2] +
+        (taps[taps.length - 2] - taps[taps.length - 3]) +
+        (taps[taps.length - 3] - taps[taps.length - 4])) /
+      3
+  }
+
+  const bpm = Math.round(60000 / diff)
   if (bpm > 30) {
     metronome.displayedTempo = tempoInput.value = bpm
-  } 
+  }
 }

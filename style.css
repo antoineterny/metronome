@@ -14,6 +14,7 @@
   font-family: "Rubik", sans-serif;
   text-transform: uppercase;
   color: var(--light);
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -127,6 +128,13 @@ button svg * {
   letter-spacing: 0.1em;
   cursor: pointer;
   user-select: none;
+  transition: 0.5s;
+}
+.tap-zone.tapped {
+  border-color: var(--yellow);
+  color: var(--yellow);
+  transition: 0s;
+  box-shadow: 0 0 5px var(--yellow);
 }
 
 .main {
@@ -162,7 +170,13 @@ button svg * {
   outline: 1px solid var(--yellow);
 }
 
-.subdiv-selector {
+.subdiv-title {
+  font-size: 1.1rem;
+  letter-spacing: 0.18em;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.subdiv-dots {
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -175,7 +189,6 @@ button svg * {
   border-radius: 100%;
   cursor: pointer;
 }
-.subdiv:hover,
 .subdiv.active {
   background-color: var(--yellow);
 }
@@ -192,17 +205,6 @@ button svg * {
   transform: translateX(5px);
 }
 
-.main button:hover,
-.play-stop-buttons button:hover,
-.tap-zone:hover {
-  background-color: var(--black);
-  border: 2px solid var(--yellow);
-}
-.main button:hover svg *,
-.play-stop-buttons button:hover svg * {
-  fill: var(--yellow);
-}
-
 .invisible {
   display: none;
 }
@@ -211,13 +213,28 @@ button svg * {
   background: var(--light);
 }
 
-@media (max-height:660px) and (orientation: landscape) {
+@media (hover: hover) and (pointer: fine) {
+  .main button:hover,
+  .play-stop-buttons button:hover {
+    background-color: var(--black);
+    border: 2px solid var(--yellow);
+  }
+  .main button:hover svg *,
+  .play-stop-buttons button:hover svg * {
+    fill: var(--yellow);
+  }
+  .subdiv:hover {
+    background-color: var(--yellow);
+  }
+}
+
+@media (max-height: 660px) and (orientation: landscape) {
   .container {
     max-width: 600px;
-    max-height: 285px;
+    max-height: 330px;
     display: grid;
     grid-template-columns: 1fr 294px 1fr;
-    grid-template-rows: 60px 160px 60px;
+    grid-template-rows: 60px 160px 70px;
     align-items: center;
   }
   .mode-selector {
